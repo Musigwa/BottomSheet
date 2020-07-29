@@ -1,21 +1,40 @@
 import React from 'react';
 import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
-import Ant from 'react-native-vector-icons/AntDesign';
+import Ant from 'react-native-vector-icons/Entypo';
 import Ion from 'react-native-vector-icons/Ionicons';
 
 const colors = {
   lightGray: 'rgba(237, 237, 237, 1)',
 };
 
-export default ({ renderHeader = true, renderTitle = true, itemSubTitle, headerLeft, headerRight, titleStyle, itemTitle, ...props}) => {
-  const { rightComponent = <Ant name="right" size={50} /> } = props;
+export default ({
+  renderHeader = true,
+  renderTitle = true,
+  itemSubTitle,
+  headerLeft,
+  headerRight,
+  titleStyle,
+  itemTitle,
+  ...props
+}) => {
+  const {
+    rightComponent = (
+      <Ant
+        name="chevron-thin-right"
+        size={40}
+        color={'rgba(224, 224, 222,1)'}
+      />
+    ),
+  } = props;
   return (
     <View style={styles.container}>
-      {renderHeader && <View style={styles.headerWrapper}>
-        <Text style={styles.headerLeft}>{headerLeft}</Text>
-        <Text style={styles.headerRight}>{headerRight}</Text>
-        <View />
-      </View>}
+      {renderHeader && (
+        <View style={styles.headerWrapper}>
+          <Text style={styles.headerLeft}>{headerLeft}</Text>
+          <Text style={styles.headerRight}>{headerRight}</Text>
+          <View />
+        </View>
+      )}
       <TouchableOpacity
         activeOpacity={0.8}
         style={styles.item}
@@ -25,8 +44,14 @@ export default ({ renderHeader = true, renderTitle = true, itemSubTitle, headerL
         <View style={styles.itemLeft}>
           <Ion name="md-bus" size={30} />
         </View>
-        <View style={styles.itemCenter}>
-         {renderTitle && <Text style={[styles.itemTitle,titleStyle]}>{itemTitle}</Text>}
+        <View
+          style={[
+            styles.itemCenter,
+            !renderTitle && {justifyContent: 'center'},
+          ]}>
+          {renderTitle && (
+            <Text style={[styles.itemTitle, titleStyle]}>{itemTitle}</Text>
+          )}
           <Text style={styles.itemSubTitle}>{itemSubTitle}</Text>
         </View>
         {rightComponent}
@@ -37,12 +62,13 @@ export default ({ renderHeader = true, renderTitle = true, itemSubTitle, headerL
 
 const styles = StyleSheet.create({
   container: {
-      marginVertical: 10,
-      justifyContent:'center',
+    marginVertical: 10,
+    justifyContent: 'center',
   },
   headerWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 2,
   },
   headerLeft: {
     width: 50,

@@ -95,8 +95,8 @@ export default () => {
             rightComponent={
               <TouchableOpacity
                 activeOpacity={0.8}
-                style={styles.rightBtnWrapper}>
-                <Text style={styles.rightBtnText}>Go</Text>
+                style={styles.goBtnWrapper}>
+                <Text style={styles.goBtnText}>Go</Text>
               </TouchableOpacity>
             }
           />
@@ -112,8 +112,7 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  rightBtnWrapper: {
+  goBtnWrapper: {
     width: 50,
     height: 50,
     borderRadius: 25,
@@ -121,5 +120,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  rightBtnText: {color: 'white', fontSize: 18, fontWeight: 'bold'},
+  goBtnText: {
+    color: 'white', 
+    fontSize: 18, 
+    fontWeight: 'bold'
+  },
 });
